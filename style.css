@@ -1,0 +1,693 @@
+/* ================================
+   TA-DIG | PREMIUM RESTAURANT MENU
+   ================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+
+/* ---------- پایه ---------- */
+
+:root {
+    --black: #080808;
+    --black-soft: #101010;
+    --card: #151515;
+
+    --gold: #d9a441;
+    --gold-light: #f4cf73;
+    --gold-dark: #9b6b1d;
+
+    --white: #ffffff;
+    --text: #eeeeee;
+    --muted: #9b9b9b;
+
+    --border: rgba(217, 164, 65, 0.18);
+
+    --radius: 22px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    direction: rtl;
+
+    font-family: "Vazirmatn", sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(217, 164, 65, 0.13),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 0% 60%,
+            rgba(217, 164, 65, 0.05),
+            transparent 30%
+        ),
+        var(--black);
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* ---------- بافت ظریف ایرانی ---------- */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.035;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,0.8) 0.7px,
+            transparent 0.7px
+        );
+
+    background-size: 7px 7px;
+
+    z-index: -1;
+}
+
+
+/* ---------- هدر ---------- */
+
+.header {
+    position: relative;
+
+    min-height: 290px;
+
+    padding: 70px 20px 55px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid var(--border);
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(217, 164, 65, 0.12),
+            transparent 65%
+        );
+}
+
+
+/* خطوط تزئینی */
+
+.header::before,
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border: 1px solid rgba(217,164,65,0.08);
+
+    transform: rotate(45deg);
+}
+
+
+.header::before {
+    right: -120px;
+    top: 40px;
+}
+
+
+.header::after {
+    left: -120px;
+    top: 40px;
+}
+
+
+/* ---------- لوگو ---------- */
+
+.logo {
+    position: relative;
+
+    font-size: clamp(58px, 15vw, 105px);
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff7dc,
+            var(--gold-light),
+            var(--gold),
+            var(--gold-dark)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 0 45px rgba(217,164,65,0.12);
+
+    animation:
+        logoAppear 1s ease both;
+}
+
+
+.subtitle {
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.subtitle::before,
+.subtitle::after {
+    content: "◆";
+
+    color: var(--gold);
+
+    font-size: 7px;
+
+    margin: 0 12px;
+
+    vertical-align: middle;
+}
+
+
+/* ---------- منوی اصلی ---------- */
+
+.menu {
+    width: min(900px, 92%);
+
+    margin: auto;
+
+    padding: 55px 0 80px;
+}
+
+
+/* ---------- دسته ---------- */
+
+.menu-section {
+    margin-bottom: 70px;
+}
+
+
+.menu-section > h2 {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 24px;
+
+    padding-bottom: 15px;
+
+    font-size: clamp(21px, 5vw, 28px);
+
+    font-weight: 800;
+
+    color: var(--white);
+}
+
+
+.menu-section > h2::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 0;
+
+    width: 70px;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+}
+
+
+.menu-section > h2::before {
+    content: "";
+
+    width: 5px;
+    height: 28px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            var(--gold-light),
+            var(--gold-dark)
+        );
+
+    box-shadow:
+        0 0 15px rgba(217,164,65,0.25);
+}
+
+
+/* ---------- لیست غذا ---------- */
+
+.menu-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ---------- آیتم ---------- */
+
+.menu-item {
+    position: relative;
+
+    min-height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 20px;
+
+    border-radius: var(--radius);
+
+    border: 1px solid rgba(255,255,255,0.055);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.015)
+        );
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.menu-item:hover {
+    transform: translateX(-5px);
+
+    border-color:
+        rgba(217,164,65,0.28);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(217,164,65,0.08),
+            rgba(255,255,255,0.025)
+        );
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.3);
+}
+
+
+.menu-item h3 {
+    font-size: 15px;
+
+    font-weight: 600;
+
+    line-height: 1.7;
+
+    color: var(--text);
+}
+
+
+.menu-item p {
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* ---------- قیمت ---------- */
+
+.price {
+    flex-shrink: 0;
+
+    min-width: 72px;
+
+    text-align: center;
+
+    padding: 7px 11px;
+
+    border-radius: 12px;
+
+    color: #17120a;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 5px 18px
+        rgba(217,164,65,0.12);
+}
+
+
+.price::after {
+    content: " تومان";
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+
+/* ---------- ناموجود ---------- */
+
+.unavailable {
+    flex-shrink: 0;
+
+    padding: 7px 11px;
+
+    border-radius: 12px;
+
+    color: #777;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    font-size: 10px;
+}
+
+
+/* ---------- نوشیدنی‌ها ---------- */
+
+.drink-group {
+    margin-top: 30px;
+}
+
+
+.drink-group > h3 {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 13px;
+
+    padding-right: 5px;
+
+    color: var(--gold-light);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.drink-group > h3::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    box-shadow:
+        0 0 10px rgba(217,164,65,0.4);
+}
+
+
+/* ---------- فوتر ---------- */
+
+.footer {
+    position: relative;
+
+    padding: 60px 20px 45px;
+
+    text-align: center;
+
+    border-top:
+        1px solid var(--border);
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(217,164,65,0.035)
+        );
+}
+
+
+.footer h2 {
+    font-size: 35px;
+
+    font-weight: 900;
+
+    color: var(--gold-light);
+
+    margin-bottom: 10px;
+}
+
+
+.footer > p {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.contact {
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    color: #c2c2c2;
+
+    font-size: 12px;
+}
+
+
+/* ---------- انیمیشن ---------- */
+
+@keyframes logoAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes itemAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+.menu-item {
+    animation:
+        itemAppear 0.55s ease both;
+}
+
+
+.menu-item:nth-child(2) {
+    animation-delay: 0.04s;
+}
+
+
+.menu-item:nth-child(3) {
+    animation-delay: 0.08s;
+}
+
+
+.menu-item:nth-child(4) {
+    animation-delay: 0.12s;
+}
+
+
+.menu-item:nth-child(5) {
+    animation-delay: 0.16s;
+}
+
+
+/* ---------- موبایل ---------- */
+
+@media (max-width: 600px) {
+
+    .header {
+        min-height: 245px;
+
+        padding-top: 55px;
+        padding-bottom: 45px;
+    }
+
+
+    .logo {
+        font-size: 70px;
+
+        letter-spacing: -3px;
+    }
+
+
+    .menu {
+        width: 94%;
+
+        padding-top: 40px;
+    }
+
+
+    .menu-section {
+        margin-bottom: 55px;
+    }
+
+
+    .menu-item {
+        padding: 15px;
+
+        min-height: 70px;
+
+        gap: 10px;
+    }
+
+
+    .menu-item h3 {
+        font-size: 14px;
+    }
+
+
+    .price {
+        min-width: 66px;
+
+        padding: 6px 8px;
+
+        font-size: 13px;
+    }
+
+
+    .unavailable {
+        font-size: 9px;
+
+        padding: 6px 8px;
+    }
+
+
+    .menu-section > h2 {
+        font-size: 20px;
+    }
+}
+
+
+/* ---------- صفحه‌های خیلی کوچک ---------- */
+
+@media (max-width: 380px) {
+
+    .menu-item {
+        padding: 13px;
+    }
+
+
+    .menu-item h3 {
+        font-size: 13px;
+    }
+
+
+    .price {
+        min-width: 60px;
+
+        font-size: 12px;
+    }
+
+
+    .price::after {
+        font-size: 8px;
+    }
+}
