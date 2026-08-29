@@ -1,693 +1,482 @@
-/* ================================
-   TA-DIG | PREMIUM RESTAURANT MENU
-   ================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
 
-
-/* ---------- پایه ---------- */
-
 :root {
-    --black: #080808;
-    --black-soft: #101010;
-    --card: #151515;
-
-    --gold: #d9a441;
-    --gold-light: #f4cf73;
-    --gold-dark: #9b6b1d;
-
-    --white: #ffffff;
-    --text: #eeeeee;
-    --muted: #9b9b9b;
-
-    --border: rgba(217, 164, 65, 0.18);
-
-    --radius: 22px;
+    --bg: #070707;
+    --surface: #111111;
+    --surface-2: #171717;
+    --gold: #d7a63d;
+    --gold-light: #f2cf78;
+    --text: #f5f5f5;
+    --muted: #929292;
+    --line: rgba(215, 166, 61, .18);
 }
-
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
 
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
     direction: rtl;
-
     font-family: "Vazirmatn", sans-serif;
-
-    color: var(--text);
-
     background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(217, 164, 65, 0.13),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 0% 60%,
-            rgba(217, 164, 65, 0.05),
-            transparent 30%
-        ),
-        var(--black);
-
+        radial-gradient(circle at 50% -15%, rgba(215,166,61,.16), transparent 34%),
+        radial-gradient(circle at 100% 50%, rgba(215,166,61,.045), transparent 28%),
+        var(--bg);
+    color: var(--text);
     min-height: 100vh;
-
     overflow-x: hidden;
 }
 
-
-/* ---------- بافت ظریف ایرانی ---------- */
-
+/* بافت بسیار ظریف */
 body::before {
     content: "";
-
     position: fixed;
-
     inset: 0;
-
     pointer-events: none;
-
-    opacity: 0.035;
-
+    opacity: .025;
     background-image:
-        radial-gradient(
-            rgba(255,255,255,0.8) 0.7px,
-            transparent 0.7px
-        );
-
-    background-size: 7px 7px;
-
+        radial-gradient(rgba(255,255,255,.9) .6px, transparent .6px);
+    background-size: 6px 6px;
     z-index: -1;
 }
 
-
-/* ---------- هدر ---------- */
+/* =========================
+   HEADER
+========================= */
 
 .header {
     position: relative;
-
-    min-height: 290px;
-
-    padding: 70px 20px 55px;
-
+    min-height: 320px;
+    padding: 70px 20px 60px;
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
-
     overflow: hidden;
-
-    border-bottom: 1px solid var(--border);
-
+    border-bottom: 1px solid var(--line);
     background:
         radial-gradient(
-            ellipse at center,
-            rgba(217, 164, 65, 0.12),
-            transparent 65%
+            circle at center,
+            rgba(215,166,61,.11),
+            transparent 55%
         );
 }
 
+.header::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(215,166,61,.07);
+    transform: rotate(45deg);
+    right: -150px;
+    top: 35px;
+}
 
-/* خطوط تزئینی */
-
-.header::before,
 .header::after {
     content: "";
-
     position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    border: 1px solid rgba(217,164,65,0.08);
-
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(215,166,61,.07);
     transform: rotate(45deg);
+    left: -150px;
+    top: 35px;
 }
-
-
-.header::before {
-    right: -120px;
-    top: 40px;
-}
-
-
-.header::after {
-    left: -120px;
-    top: 40px;
-}
-
-
-/* ---------- لوگو ---------- */
 
 .logo {
     position: relative;
-
-    font-size: clamp(58px, 15vw, 105px);
-
-    line-height: 1;
-
+    z-index: 2;
+    font-size: clamp(65px, 18vw, 115px);
+    line-height: .95;
     font-weight: 900;
-
-    letter-spacing: -4px;
-
+    letter-spacing: -5px;
     background:
         linear-gradient(
-            145deg,
-            #fff7dc,
-            var(--gold-light),
-            var(--gold),
-            var(--gold-dark)
+            135deg,
+            #fff9e7 0%,
+            var(--gold-light) 35%,
+            var(--gold) 65%,
+            #9c6b1e 100%
         );
-
     -webkit-background-clip: text;
     background-clip: text;
-
     color: transparent;
-
-    text-shadow:
-        0 0 45px rgba(217,164,65,0.12);
-
-    animation:
-        logoAppear 1s ease both;
+    filter: drop-shadow(0 10px 30px rgba(215,166,61,.12));
+    animation: logoIn .9s ease both;
 }
-
 
 .subtitle {
-    margin-top: 18px;
-
+    position: relative;
+    z-index: 2;
+    margin-top: 22px;
     color: var(--muted);
-
-    font-size: 14px;
-
+    font-size: 13px;
     letter-spacing: 2px;
 }
-
 
 .subtitle::before,
 .subtitle::after {
     content: "◆";
-
     color: var(--gold);
-
-    font-size: 7px;
-
+    font-size: 6px;
     margin: 0 12px;
-
     vertical-align: middle;
 }
 
-
-/* ---------- منوی اصلی ---------- */
+/* =========================
+   MENU
+========================= */
 
 .menu {
-    width: min(900px, 92%);
-
+    width: min(920px, 92%);
     margin: auto;
-
-    padding: 55px 0 80px;
+    padding: 65px 0 90px;
 }
-
-
-/* ---------- دسته ---------- */
 
 .menu-section {
-    margin-bottom: 70px;
+    margin-bottom: 75px;
 }
-
 
 .menu-section > h2 {
     position: relative;
-
     display: flex;
-
     align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 24px;
-
-    padding-bottom: 15px;
-
-    font-size: clamp(21px, 5vw, 28px);
-
+    gap: 13px;
+    margin-bottom: 25px;
+    padding-bottom: 17px;
+    color: #fff;
+    font-size: clamp(20px, 5vw, 27px);
     font-weight: 800;
-
-    color: var(--white);
 }
 
+.menu-section > h2::before {
+    content: "";
+    width: 5px;
+    height: 29px;
+    border-radius: 10px;
+    background:
+        linear-gradient(
+            to bottom,
+            var(--gold-light),
+            var(--gold)
+        );
+    box-shadow: 0 0 18px rgba(215,166,61,.2);
+}
 
 .menu-section > h2::after {
     content: "";
-
     position: absolute;
-
     right: 0;
-
     bottom: 0;
-
-    width: 70px;
-    height: 2px;
-
+    width: 95px;
+    height: 1px;
     background:
         linear-gradient(
-            90deg,
+            to left,
             var(--gold),
             transparent
         );
 }
 
-
-.menu-section > h2::before {
-    content: "";
-
-    width: 5px;
-    height: 28px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            var(--gold-light),
-            var(--gold-dark)
-        );
-
-    box-shadow:
-        0 0 15px rgba(217,164,65,0.25);
-}
-
-
-/* ---------- لیست غذا ---------- */
-
 .menu-list {
     display: flex;
-
     flex-direction: column;
-
-    gap: 10px;
+    gap: 11px;
 }
 
-
-/* ---------- آیتم ---------- */
+/* =========================
+   FOOD ITEM
+========================= */
 
 .menu-item {
     position: relative;
-
-    min-height: 76px;
-
+    min-height: 78px;
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    gap: 20px;
-
-    padding: 17px 20px;
-
-    border-radius: var(--radius);
-
-    border: 1px solid rgba(255,255,255,0.055);
-
+    gap: 18px;
+    padding: 16px 19px;
+    border: 1px solid rgba(255,255,255,.055);
+    border-radius: 20px;
     background:
         linear-gradient(
-            110deg,
-            rgba(255,255,255,0.045),
-            rgba(255,255,255,0.015)
+            120deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
         );
-
-    backdrop-filter: blur(8px);
-
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18);
     transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
 }
-
 
 .menu-item:hover {
-    transform: translateX(-5px);
-
-    border-color:
-        rgba(217,164,65,0.28);
-
+    transform: translateY(-3px);
+    border-color: rgba(215,166,61,.3);
     background:
         linear-gradient(
-            110deg,
-            rgba(217,164,65,0.08),
-            rgba(255,255,255,0.025)
+            120deg,
+            rgba(215,166,61,.08),
+            rgba(255,255,255,.018)
         );
-
     box-shadow:
-        0 12px 35px rgba(0,0,0,0.3);
+        0 18px 40px rgba(0,0,0,.35);
 }
-
 
 .menu-item h3 {
+    color: #f2f2f2;
     font-size: 15px;
-
     font-weight: 600;
-
-    line-height: 1.7;
-
-    color: var(--text);
+    line-height: 1.8;
 }
-
 
 .menu-item p {
-    margin-top: 3px;
-
+    margin-top: 2px;
     color: var(--muted);
-
-    font-size: 11px;
+    font-size: 10px;
 }
 
-
-/* ---------- قیمت ---------- */
+/* =========================
+   PRICE
+========================= */
 
 .price {
     flex-shrink: 0;
-
-    min-width: 72px;
-
+    min-width: 78px;
+    padding: 8px 10px;
+    border-radius: 13px;
     text-align: center;
-
-    padding: 7px 11px;
-
-    border-radius: 12px;
-
     color: #17120a;
-
+    font-size: 14px;
+    font-weight: 900;
     background:
         linear-gradient(
             135deg,
             var(--gold-light),
             var(--gold)
         );
-
-    font-size: 14px;
-
-    font-weight: 900;
-
     box-shadow:
-        0 5px 18px
-        rgba(217,164,65,0.12);
+        0 6px 18px rgba(215,166,61,.13);
 }
-
 
 .price::after {
     content: " تومان";
-
-    font-size: 9px;
-
+    font-size: 8px;
     font-weight: 600;
 }
 
-
-/* ---------- ناموجود ---------- */
+/* =========================
+   UNAVAILABLE
+========================= */
 
 .unavailable {
     flex-shrink: 0;
-
     padding: 7px 11px;
-
     border-radius: 12px;
-
     color: #777;
-
-    background:
-        rgba(255,255,255,0.04);
-
-    border:
-        1px solid rgba(255,255,255,0.06);
-
-    font-size: 10px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.055);
+    font-size: 9px;
 }
 
-
-/* ---------- نوشیدنی‌ها ---------- */
+/* =========================
+   DRINKS
+========================= */
 
 .drink-group {
     margin-top: 30px;
 }
 
-
 .drink-group > h3 {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-bottom: 13px;
-
     padding-right: 5px;
-
     color: var(--gold-light);
-
-    font-size: 16px;
-
+    font-size: 15px;
     font-weight: 700;
 }
 
-
 .drink-group > h3::before {
     content: "";
-
-    width: 6px;
-    height: 6px;
-
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-
     background: var(--gold);
-
-    box-shadow:
-        0 0 10px rgba(217,164,65,0.4);
+    box-shadow: 0 0 12px rgba(215,166,61,.35);
 }
 
-
-/* ---------- فوتر ---------- */
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
     position: relative;
-
-    padding: 60px 20px 45px;
-
+    padding: 65px 20px 45px;
     text-align: center;
-
-    border-top:
-        1px solid var(--border);
-
+    border-top: 1px solid var(--line);
     background:
         linear-gradient(
-            180deg,
+            to bottom,
             transparent,
-            rgba(217,164,65,0.035)
+            rgba(215,166,61,.035)
         );
 }
 
-
 .footer h2 {
-    font-size: 35px;
-
-    font-weight: 900;
-
     color: var(--gold-light);
-
-    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 900;
 }
-
 
 .footer > p {
+    margin-top: 9px;
     color: var(--muted);
-
-    font-size: 12px;
+    font-size: 11px;
 }
-
 
 .contact {
-    margin-top: 25px;
-
     display: flex;
-
     flex-direction: column;
-
-    gap: 9px;
-
-    color: #c2c2c2;
-
-    font-size: 12px;
+    gap: 8px;
+    margin-top: 24px;
+    color: #bdbdbd;
+    font-size: 11px;
 }
 
+/* =========================
+   ANIMATIONS
+========================= */
 
-/* ---------- انیمیشن ---------- */
-
-@keyframes logoAppear {
-
+@keyframes logoIn {
     from {
         opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(0.96);
+        transform: translateY(20px) scale(.96);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform: translateY(0) scale(1);
     }
 }
 
-
-@keyframes itemAppear {
-
+@keyframes itemIn {
     from {
         opacity: 0;
-
-        transform:
-            translateY(12px);
+        transform: translateY(10px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
-
 
 .menu-item {
-    animation:
-        itemAppear 0.55s ease both;
+    animation: itemIn .5s ease both;
 }
-
 
 .menu-item:nth-child(2) {
-    animation-delay: 0.04s;
+    animation-delay: .04s;
 }
-
 
 .menu-item:nth-child(3) {
-    animation-delay: 0.08s;
+    animation-delay: .08s;
 }
-
 
 .menu-item:nth-child(4) {
-    animation-delay: 0.12s;
+    animation-delay: .12s;
 }
-
 
 .menu-item:nth-child(5) {
-    animation-delay: 0.16s;
+    animation-delay: .16s;
 }
 
-
-/* ---------- موبایل ---------- */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
     .header {
-        min-height: 245px;
-
-        padding-top: 55px;
-        padding-bottom: 45px;
+        min-height: 255px;
+        padding: 55px 18px 45px;
     }
 
-
     .logo {
-        font-size: 70px;
-
+        font-size: 76px;
         letter-spacing: -3px;
     }
 
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
 
     .menu {
         width: 94%;
-
-        padding-top: 40px;
+        padding-top: 42px;
     }
-
 
     .menu-section {
-        margin-bottom: 55px;
+        margin-bottom: 58px;
     }
-
-
-    .menu-item {
-        padding: 15px;
-
-        min-height: 70px;
-
-        gap: 10px;
-    }
-
-
-    .menu-item h3 {
-        font-size: 14px;
-    }
-
-
-    .price {
-        min-width: 66px;
-
-        padding: 6px 8px;
-
-        font-size: 13px;
-    }
-
-
-    .unavailable {
-        font-size: 9px;
-
-        padding: 6px 8px;
-    }
-
 
     .menu-section > h2 {
         font-size: 20px;
     }
-}
-
-
-/* ---------- صفحه‌های خیلی کوچک ---------- */
-
-@media (max-width: 380px) {
 
     .menu-item {
-        padding: 13px;
+        min-height: 70px;
+        padding: 14px;
+        border-radius: 17px;
     }
-
 
     .menu-item h3 {
         font-size: 13px;
     }
 
-
     .price {
-        min-width: 60px;
-
+        min-width: 68px;
+        padding: 7px 8px;
         font-size: 12px;
     }
 
-
-    .price::after {
+    .unavailable {
+        padding: 6px 8px;
         font-size: 8px;
     }
 }
+
+@media (max-width: 370px) {
+
+    .logo {
+        font-size: 68px;
+    }
+
+    .menu-item {
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .menu-item h3 {
+        font-size: 12px;
+    }
+
+    .price {
+        min-width: 61px;
+        font-size: 11px;
+    }
+           }
