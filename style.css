@@ -721,3 +721,153 @@ body::before{
         border-radius: 12px;
     }
 }
+/* =========================
+   CONTACT & ADDRESS
+========================= */
+
+.footer-brand {
+    margin-bottom: 28px;
+}
+
+.footer-brand h2 {
+    margin: 0;
+}
+
+.footer-brand p {
+    margin-top: 7px;
+    color: #888;
+    font-size: 11px;
+}
+
+.contact-box {
+    width: min(620px, 100%);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 17px;
+
+    color: #eee;
+    text-decoration: none;
+    text-align: right;
+
+    border: 1px solid rgba(212,162,60,.16);
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,162,60,.07),
+            rgba(255,255,255,.025)
+        );
+
+    transition: .25s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(212,162,60,.4);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,162,60,.13),
+            rgba(255,255,255,.035)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.3);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2cf78,
+            #d4a23c
+        );
+
+    box-shadow:
+        0 5px 18px rgba(212,162,60,.16);
+}
+
+.contact-item span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-item strong {
+    color: #f5d27a;
+    font-size: 13px;
+}
+
+.contact-item small {
+    color: #aaa;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+.footer-bottom {
+    width: min(620px, 100%);
+
+    margin: 35px auto 0;
+    padding-top: 18px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+
+    color: #666;
+
+    font-size: 9px;
+}
+
+@media (max-width: 600px) {
+
+    .contact-item {
+        padding: 14px;
+        border-radius: 17px;
+    }
+
+    .contact-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+    }
+
+    .contact-item strong {
+        font-size: 12px;
+    }
+
+    .contact-item small {
+        font-size: 9px;
+    }
+
+    .footer-bottom {
+        font-size: 8px;
+    }
+}
