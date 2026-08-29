@@ -1,183 +1,233 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
 
-:root {
-    --bg: #070707;
-    --surface: #111111;
-    --surface-2: #171717;
-    --gold: #d7a63d;
-    --gold-light: #f2cf78;
-    --text: #f5f5f5;
-    --muted: #929292;
-    --line: rgba(215, 166, 61, .18);
+:root{
+    --bg:#050505;
+    --panel:#101010;
+    --panel2:#151515;
+    --gold:#d4a23c;
+    --gold2:#f5d27a;
+    --cream:#fff7df;
+    --text:#f3f3f3;
+    --muted:#969696;
+    --line:rgba(212,162,60,.22);
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    direction: rtl;
-    font-family: "Vazirmatn", sans-serif;
+body{
+    direction:rtl;
+    font-family:"Vazirmatn",sans-serif;
+    color:var(--text);
     background:
-        radial-gradient(circle at 50% -15%, rgba(215,166,61,.16), transparent 34%),
-        radial-gradient(circle at 100% 50%, rgba(215,166,61,.045), transparent 28%),
+        radial-gradient(
+            circle at 50% -8%,
+            rgba(212,162,60,.20),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 100% 40%,
+            rgba(212,162,60,.06),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 0% 75%,
+            rgba(212,162,60,.045),
+            transparent 25%
+        ),
         var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
-/* بافت بسیار ظریف */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: .025;
-    background-image:
-        radial-gradient(rgba(255,255,255,.9) .6px, transparent .6px);
-    background-size: 6px 6px;
-    z-index: -1;
+/* نورهای ظریف پس‌زمینه */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(
+            115deg,
+            transparent 30%,
+            rgba(255,255,255,.018) 50%,
+            transparent 70%
+        );
+    z-index:-1;
 }
 
 /* =========================
    HEADER
 ========================= */
 
-.header {
-    position: relative;
-    min-height: 320px;
-    padding: 70px 20px 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--line);
+.header{
+    position:relative;
+    min-height:360px;
+    padding:70px 20px 65px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+
+    border-bottom:1px solid var(--line);
+
     background:
         radial-gradient(
-            circle at center,
-            rgba(215,166,61,.11),
-            transparent 55%
+            ellipse at center,
+            rgba(212,162,60,.12),
+            transparent 58%
         );
 }
 
-.header::before {
-    content: "";
-    position: absolute;
-    width: 230px;
-    height: 230px;
-    border: 1px solid rgba(215,166,61,.07);
-    transform: rotate(45deg);
-    right: -150px;
-    top: 35px;
+/* قاب طلایی */
+
+.header::before{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border:1px solid rgba(212,162,60,.10);
+    transform:rotate(45deg);
+    right:-170px;
+    top:35px;
 }
 
-.header::after {
-    content: "";
-    position: absolute;
-    width: 230px;
-    height: 230px;
-    border: 1px solid rgba(215,166,61,.07);
-    transform: rotate(45deg);
-    left: -150px;
-    top: 35px;
+.header::after{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border:1px solid rgba(212,162,60,.10);
+    transform:rotate(45deg);
+    left:-170px;
+    top:35px;
 }
 
-.logo {
-    position: relative;
-    z-index: 2;
-    font-size: clamp(65px, 18vw, 115px);
-    line-height: .95;
-    font-weight: 900;
-    letter-spacing: -5px;
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+    position:relative;
+    z-index:2;
+
+    font-size:clamp(72px,18vw,125px);
+    font-weight:900;
+    line-height:.95;
+    letter-spacing:-6px;
+
     background:
         linear-gradient(
-            135deg,
-            #fff9e7 0%,
-            var(--gold-light) 35%,
-            var(--gold) 65%,
-            #9c6b1e 100%
+            145deg,
+            #fffde9 0%,
+            var(--gold2) 30%,
+            var(--gold) 62%,
+            #8c5c17 100%
         );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 10px 30px rgba(215,166,61,.12));
-    animation: logoIn .9s ease both;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    filter:
+        drop-shadow(0 8px 30px rgba(212,162,60,.16));
+
+    animation:logoEnter 1s cubic-bezier(.2,.8,.2,1);
 }
 
-.subtitle {
-    position: relative;
-    z-index: 2;
-    margin-top: 22px;
-    color: var(--muted);
-    font-size: 13px;
-    letter-spacing: 2px;
+.subtitle{
+    position:relative;
+    z-index:2;
+
+    margin-top:24px;
+
+    color:#aaa;
+    font-size:13px;
+    letter-spacing:3px;
 }
 
 .subtitle::before,
-.subtitle::after {
-    content: "◆";
-    color: var(--gold);
-    font-size: 6px;
-    margin: 0 12px;
-    vertical-align: middle;
+.subtitle::after{
+    content:"◆";
+    color:var(--gold);
+    font-size:6px;
+    margin:0 14px;
+    vertical-align:middle;
 }
 
 /* =========================
    MENU
 ========================= */
 
-.menu {
-    width: min(920px, 92%);
-    margin: auto;
-    padding: 65px 0 90px;
+.menu{
+    width:min(940px,92%);
+    margin:auto;
+    padding:70px 0 100px;
 }
 
-.menu-section {
-    margin-bottom: 75px;
+/* =========================
+   CATEGORY
+========================= */
+
+.menu-section{
+    margin-bottom:82px;
 }
 
-.menu-section > h2 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    margin-bottom: 25px;
-    padding-bottom: 17px;
-    color: #fff;
-    font-size: clamp(20px, 5vw, 27px);
-    font-weight: 800;
+.menu-section > h2{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin-bottom:27px;
+    padding-bottom:18px;
+
+    font-size:clamp(21px,5vw,29px);
+    font-weight:900;
+    color:#fff;
 }
 
-.menu-section > h2::before {
-    content: "";
-    width: 5px;
-    height: 29px;
-    border-radius: 10px;
+.menu-section > h2::before{
+    content:"";
+
+    width:6px;
+    height:32px;
+
+    border-radius:20px;
+
     background:
         linear-gradient(
             to bottom,
-            var(--gold-light),
+            var(--gold2),
             var(--gold)
         );
-    box-shadow: 0 0 18px rgba(215,166,61,.2);
+
+    box-shadow:
+        0 0 20px rgba(212,162,60,.25);
 }
 
-.menu-section > h2::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 95px;
-    height: 1px;
+.menu-section > h2::after{
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    bottom:0;
+
+    width:130px;
+    height:1px;
+
     background:
         linear-gradient(
             to left,
@@ -186,297 +236,378 @@ body::before {
         );
 }
 
-.menu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 11px;
-}
-
 /* =========================
-   FOOD ITEM
+   ITEMS
 ========================= */
 
-.menu-item {
-    position: relative;
-    min-height: 78px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding: 16px 19px;
-    border: 1px solid rgba(255,255,255,.055);
-    border-radius: 20px;
+.menu-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu-item{
+    position:relative;
+
+    min-height:82px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:18px;
+
+    padding:17px 20px;
+
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:22px;
+
     background:
         linear-gradient(
-            120deg,
-            rgba(255,255,255,.045),
+            135deg,
+            rgba(255,255,255,.055),
             rgba(255,255,255,.012)
         );
+
     box-shadow:
-        0 12px 30px rgba(0,0,0,.18);
+        inset 0 1px 0 rgba(255,255,255,.025),
+        0 12px 35px rgba(0,0,0,.20);
+
+    backdrop-filter:blur(10px);
+
+    overflow:hidden;
+
     transition:
         transform .3s ease,
         border-color .3s ease,
-        background .3s ease,
-        box-shadow .3s ease;
+        box-shadow .3s ease,
+        background .3s ease;
 }
 
-.menu-item:hover {
-    transform: translateY(-3px);
-    border-color: rgba(215,166,61,.3);
+.menu-item::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+    right:0;
+
+    width:2px;
+
     background:
         linear-gradient(
-            120deg,
-            rgba(215,166,61,.08),
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    opacity:.55;
+}
+
+.menu-item:hover{
+    transform:translateY(-4px);
+
+    border-color:rgba(212,162,60,.32);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(212,162,60,.09),
             rgba(255,255,255,.018)
         );
+
     box-shadow:
-        0 18px 40px rgba(0,0,0,.35);
+        0 20px 45px rgba(0,0,0,.38),
+        0 0 25px rgba(212,162,60,.045);
 }
 
-.menu-item h3 {
-    color: #f2f2f2;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.8;
+.menu-item h3{
+    color:#f5f5f5;
+
+    font-size:15px;
+    font-weight:600;
+
+    line-height:1.8;
 }
 
-.menu-item p {
-    margin-top: 2px;
-    color: var(--muted);
-    font-size: 10px;
+.menu-item p{
+    margin-top:3px;
+
+    color:var(--muted);
+
+    font-size:10px;
 }
 
 /* =========================
    PRICE
 ========================= */
 
-.price {
-    flex-shrink: 0;
-    min-width: 78px;
-    padding: 8px 10px;
-    border-radius: 13px;
-    text-align: center;
-    color: #17120a;
-    font-size: 14px;
-    font-weight: 900;
+.price{
+    position:relative;
+
+    flex-shrink:0;
+
+    min-width:82px;
+
+    padding:9px 11px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    color:#171107;
+
+    font-size:14px;
+    font-weight:900;
+
     background:
         linear-gradient(
             135deg,
-            var(--gold-light),
+            #ffe9a9,
+            var(--gold2) 40%,
             var(--gold)
         );
+
     box-shadow:
-        0 6px 18px rgba(215,166,61,.13);
+        0 7px 22px rgba(212,162,60,.18),
+        inset 0 1px 0 rgba(255,255,255,.65);
 }
 
-.price::after {
-    content: " تومان";
-    font-size: 8px;
-    font-weight: 600;
+.price::after{
+    content:" تومان";
+
+    font-size:8px;
+    font-weight:700;
 }
 
 /* =========================
    UNAVAILABLE
 ========================= */
 
-.unavailable {
-    flex-shrink: 0;
-    padding: 7px 11px;
-    border-radius: 12px;
-    color: #777;
-    background: rgba(255,255,255,.035);
-    border: 1px solid rgba(255,255,255,.055);
-    font-size: 9px;
+.unavailable{
+    flex-shrink:0;
+
+    padding:8px 12px;
+
+    border-radius:13px;
+
+    color:#777;
+
+    font-size:9px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.06);
 }
 
 /* =========================
-   DRINKS
+   DRINK GROUP
 ========================= */
 
-.drink-group {
-    margin-top: 30px;
+.drink-group{
+    margin-top:34px;
 }
 
-.drink-group > h3 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 13px;
-    padding-right: 5px;
-    color: var(--gold-light);
-    font-size: 15px;
-    font-weight: 700;
+.drink-group > h3{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:14px;
+    padding-right:5px;
+
+    color:var(--gold2);
+
+    font-size:16px;
+    font-weight:800;
 }
 
-.drink-group > h3::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 12px rgba(215,166,61,.35);
+.drink-group > h3::before{
+    content:"";
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 15px rgba(212,162,60,.45);
 }
 
 /* =========================
    FOOTER
 ========================= */
 
-.footer {
-    position: relative;
-    padding: 65px 20px 45px;
-    text-align: center;
-    border-top: 1px solid var(--line);
+.footer{
+    position:relative;
+
+    padding:70px 20px 48px;
+
+    text-align:center;
+
+    border-top:1px solid var(--line);
+
     background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            rgba(215,166,61,.035)
+        radial-gradient(
+            ellipse at center top,
+            rgba(212,162,60,.07),
+            transparent 55%
         );
 }
 
-.footer h2 {
-    color: var(--gold-light);
-    font-size: 36px;
-    font-weight: 900;
+.footer h2{
+    color:var(--gold2);
+
+    font-size:40px;
+    font-weight:900;
+
+    text-shadow:
+        0 8px 30px rgba(212,162,60,.15);
 }
 
-.footer > p {
-    margin-top: 9px;
-    color: var(--muted);
-    font-size: 11px;
+.footer > p{
+    margin-top:10px;
+
+    color:var(--muted);
+
+    font-size:11px;
 }
 
-.contact {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 24px;
-    color: #bdbdbd;
-    font-size: 11px;
+.contact{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+
+    margin-top:25px;
+
+    color:#bbb;
+
+    font-size:11px;
 }
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
 
-@keyframes logoIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px) scale(.96);
+@keyframes logoEnter{
+    from{
+        opacity:0;
+        transform:
+            translateY(25px)
+            scale(.94);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes itemIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
-.menu-item {
-    animation: itemIn .5s ease both;
+@keyframes itemEnter{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-.menu-item:nth-child(2) {
-    animation-delay: .04s;
+.menu-item{
+    animation:itemEnter .55s ease both;
 }
 
-.menu-item:nth-child(3) {
-    animation-delay: .08s;
-}
-
-.menu-item:nth-child(4) {
-    animation-delay: .12s;
-}
-
-.menu-item:nth-child(5) {
-    animation-delay: .16s;
-}
+.menu-item:nth-child(2){animation-delay:.04s;}
+.menu-item:nth-child(3){animation-delay:.08s;}
+.menu-item:nth-child(4){animation-delay:.12s;}
+.menu-item:nth-child(5){animation-delay:.16s;}
+.menu-item:nth-child(6){animation-delay:.20s;}
+.menu-item:nth-child(7){animation-delay:.24s;}
 
 /* =========================
    MOBILE
 ========================= */
 
-@media (max-width: 600px) {
+@media(max-width:600px){
 
-    .header {
-        min-height: 255px;
-        padding: 55px 18px 45px;
+    .header{
+        min-height:270px;
+        padding:55px 18px 48px;
     }
 
-    .logo {
-        font-size: 76px;
-        letter-spacing: -3px;
+    .logo{
+        font-size:78px;
+        letter-spacing:-4px;
     }
 
-    .subtitle {
-        font-size: 11px;
-        letter-spacing: 1.5px;
+    .subtitle{
+        font-size:10px;
+        letter-spacing:2px;
     }
 
-    .menu {
-        width: 94%;
-        padding-top: 42px;
+    .menu{
+        width:94%;
+        padding-top:45px;
     }
 
-    .menu-section {
-        margin-bottom: 58px;
+    .menu-section{
+        margin-bottom:60px;
     }
 
-    .menu-section > h2 {
-        font-size: 20px;
+    .menu-section > h2{
+        font-size:20px;
     }
 
-    .menu-item {
-        min-height: 70px;
-        padding: 14px;
-        border-radius: 17px;
+    .menu-item{
+        min-height:72px;
+        padding:14px;
+        border-radius:18px;
     }
 
-    .menu-item h3 {
-        font-size: 13px;
+    .menu-item h3{
+        font-size:13px;
     }
 
-    .price {
-        min-width: 68px;
-        padding: 7px 8px;
-        font-size: 12px;
+    .price{
+        min-width:70px;
+        padding:8px;
+        font-size:12px;
     }
 
-    .unavailable {
-        padding: 6px 8px;
-        font-size: 8px;
+    .unavailable{
+        padding:7px 8px;
+        font-size:8px;
+    }
+
+    .footer h2{
+        font-size:34px;
     }
 }
 
-@media (max-width: 370px) {
+@media(max-width:370px){
 
-    .logo {
-        font-size: 68px;
+    .logo{
+        font-size:69px;
     }
 
-    .menu-item {
-        gap: 8px;
-        padding: 12px;
+    .menu-item{
+        gap:8px;
+        padding:12px;
     }
 
-    .menu-item h3 {
-        font-size: 12px;
+    .menu-item h3{
+        font-size:12px;
     }
 
-    .price {
-        min-width: 61px;
-        font-size: 11px;
+    .price{
+        min-width:62px;
+        font-size:11px;
     }
-           }
+}
